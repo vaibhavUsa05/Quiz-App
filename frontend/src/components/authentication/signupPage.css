@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    padding: 0;
+    box-shadow:border-box;
+}
+.signup {
+    background-color: #ffeaa7;
+    background-image: linear-gradient(315deg, #ffeaa7 0%, #000000 74%);
+    margin:auto;
+    position: relative;
+    height: 100vh;
+  }
+  
+
+
+
+
+  .signupPage{
+    color: rgb(196, 248, 248);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px;
+    font-size: 37px;
+    text-align: center;
+  }
+  .signupForm {  
+    display:grid;
+    grid-template-columns: auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+   width:80%;
+   margin:auto;
+  }
+  
+  .username,
+  .Email,
+  .Contact,
+  .password {
+    margin-bottom: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    outline: none;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+  .signupSection{
+    display: grid;
+    grid-template-columns:auto auto;
+    
+  }
+  .signupImage{
+    position: relative;
+  }
+  .image{
+    object-fit:fill;
+    width:100%;
+    height: 60%;
+    position: absolute;
+    right:10%;
+    top:20%;
+  }
+  @media screen and (max-width: 760px) {
+    .signupSection{
+        grid-template-columns: auto;
+    }
+  .signupForm{
+    width:90%;
+  }
+}
+@media screen and (max-width: 350px) {
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+      font-size:0.8rem;
+      line-height: 1.5rem;
+      outline: none;
+    }
+    .link{
+        font-size:0.8rem;
+    }
+
+}  
+.submit{
+    color:whitesmoke;
+    background-color: green;
+    border-radius: 8px;
+    padding: 8px;
+    margin:auto;
+    border:4px solid rgb(78, 214, 78);
+}
+
+.loginPage{
+    color:rgb(16, 16, 67);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px;
+    font-size: 37px;
+    text-align: center;
+}
+.router{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+
+

@@ -1,0 +1,106 @@
+*{
+    margin:0;
+    padding: 0;
+    box-shadow:border-box;
+}
+.admin {
+  margin: auto;
+  position: relative;
+  height: 100vh;
+  background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #7f8c8d 74%);
+}
+.adminPage{
+  color:rgb(221, 221, 228);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 5px;
+  font-size: 37px;
+  text-align: center;
+}
+  .adminForm {  
+    display:grid;
+    grid-template-columns: auto;
+    background-color: #352f2f;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+   width:40%;
+   margin:auto;
+  }
+  .textAdminID{
+    margin:10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    outline: none;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+  }
+  .link{
+    color:wheat;
+    text-decoration: none;
+  }
+  input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+  @media screen and (max-width: 760px) {
+  .adminForm{
+    width:90%;
+  }
+}
+@media screen and (max-width: 350px) {
+    
+    input[type="text"],
+    input[type="password"] {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+      font-size:0.8rem;
+      line-height: 1.5rem;
+      outline: none;
+    }
+    
+    .link{
+      font-size:0.8rem;
+  }
+}  
+.submit{
+    color:whitesmoke;
+    background-color: green;
+    border-radius: 8px;
+    padding: 8px;
+    margin:auto;
+    border:4px solid rgb(78, 214, 78);
+}
+
+
+.router{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
