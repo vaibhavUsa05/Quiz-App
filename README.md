@@ -1,3 +1,3 @@
 # 221B
- * User Authentication and Contact Us Schema is done
+ * User Authentication and Contact page with email Schema is done
  * Frontend logic for Auth pages is done
