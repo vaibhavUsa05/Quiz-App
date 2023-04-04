@@ -5,6 +5,7 @@ import './App.css';
  import AdminPage from './components/authentication/admin';
  import AboutPage from './components/aboutusPage';
  import ContactPage from './components/contactPage';
+ import ContestPage from './components/contestPage';
 import HomePage from "./components/homePage";
 function App() {
   return ([
@@ -17,6 +18,7 @@ function App() {
         <Route path="/admin" element={<AdminPage/>}></Route>
         <Route path="/contact" element={<ContactPage/>}></Route>
         <Route path="/AboutUs" element={<AboutPage/>}></Route>
+        <Route path="/contestPage" element={<ContestPage/>}></Route>
       </Routes>
      </Router>
     </div>

@@ -1,38 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
 import "./loginPage.css";
-import {BrowserRouter as Router,Route,Link, Routes} from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import axios from "axios";
 import image from "../../modals/assets/image6.jpg";
-//<a href="https://www.freepik.com/free-vector/male-detective-wearing-brown-overcoat-hat_27180975.htm#query=investigator&position=7&from_view=search&track=robertav1_2">Image by brgfx</a> on Freepik
+import 'react-toastify/dist/ReactToastify.css';
 const LoginPage = () => {
+  const [userData, setUserData] = useState({
+    Email: "", // fixed capitalization
+    Password: ""
+  });
+  const navigate = useNavigate();
+
+  const successfulSubmitAlert = () => {
+    toast.success('Congrats your form is submitted succesfully', {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+  const InfoSubmitAlert = () => {
+    toast.success('Server Error 500', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+  const onSubmitLoginHandler = async (e) => {
+    e.preventDefault(); // prevent default form submission behavior
+    try {
+      const response = await axios.post("/users/login", {
+        Email : userData.Email,
+        Password : userData.Password
+      }, { // use POST method and send userData as request body
+        withCredentials: true // send cookies with request
+      });
+      if (response) {
+        successfulSubmitAlert();
+        navigate("/contestPage");
+      }
+      else{
+        InfoSubmitAlert();
+      }
+    } catch (err) {
+      console.log("error in form");
+    }
+  }
+
   return (
     <div className="Login">
       <h3 className="loginPage">Login Now</h3>
       <div className="loginSection">
-      <form className="loginForm" method="post">
-        <div className="Email">
-          <input type="email" className="email" name="email" placeholder="Enter the email address" />
-        </div>
-        <div className="password">
-          <input type="text" name="password" className="password"  placeholder="Enter your password" />
-        </div>
-        <div className="router">  
-          <button name="submit" className="submitLoginButton" >Submit</button>
-          <div className="routerLinks"> 
-          <Link to="/admin" className="link">
-              Login as Admin
-            </Link>
-             <Link to="/signup" className="link">Create Account</Link>
-   
+        <form className="loginForm" onSubmit={onSubmitLoginHandler}>
+          <div className="Email">
+            <input type="email" className="email" name="Email" placeholder="Enter the email address" onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })} required />
+          </div>
+          <div className="password">
+            <input type="password" name="Password" className="password" placeholder="Enter your password" onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })} required />
+          </div>
+          <div className="router">
+            <button type="submit" name="submit" className="submitLoginButton">Submit</button>
+            <div className="routerLinks">
+              <Link to="/admin" className="link">Login as Admin</Link>
+              <Link to="/signup" className="link">Create Account</Link>
             </div>
+          </div>
+        </form>
+        <div className="loginupImage">
+          <img src={image} className="loginImage" alt="imageLogin" />
         </div>
-      </form>
-      
-
-      <div className="loginupImage">
-<img src={image} className="loginImage" alt="image"/>
-</div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
