@@ -3,7 +3,7 @@ const NewSignupToUser = require("../modals/mailSchema");
 
 const SendMailToAdminController=async(req,res,next)=>{
     console.log(" send mail function")
-res.status(200).json({"message":" all good in mail"})
-return 
+    let data="yes"
+res.send(data) 
 }
 module.exports=SendMailToAdminController;

@@ -46,8 +46,32 @@ const [userSignupData, setUserSignupData] = useState({
       theme: "light",
     });
   }
-  const InfoSubmitAlert = () => {
-    toast.success('Server Error 500', {
+  const WarningSubmitAlert = () => {
+    toast.warn('Account Already Exist !!', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+  const ServerErrorSubmitAlert = () => {
+    toast.error('Server Error 500', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+  const LengthErrorSubmitAlert = () => {
+    toast.error('Password must be in between 8 to 15 characters', {
       position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,
@@ -66,6 +90,10 @@ console.log(userSignupData);
         const confirmPassword=userSignupData.ConfirmPassword;
         if(password!==confirmPassword){
             ErrorSubmitAlert();
+            return;
+        }
+        if(password.length<5){
+LengthErrorSubmitAlert();
         }
         else{
       const response = await axios.post("/users/signup",
@@ -78,20 +106,26 @@ console.log(userSignupData);
       }, { // use POST method and send userData as request body
         withCredentials: true // send cookies with request
       });
-      if (response) {
-        console.log(response);
+      if(response.status===409){
+        console.log("user with these credentials already exist")
+WarningSubmitAlert();
+return;
+      }
+      else if(response.status===500){
+        console.log("server side error ")
+        ServerErrorSubmitAlert();
+        return;
+              }
+      else{
         successfulSubmitAlert();
         navigate("/login");
       }
-      else{
-InfoSubmitAlert();
-      }
-
-
-    }
+    
+   }
     } catch (err) {
       console.log("error in form");
-      navigate("/login")
+      WarningSubmitAlert();
+      navigate("/signup")
     }
   }
 

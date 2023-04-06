@@ -4,15 +4,18 @@ const services = require("../controllers/authentication");
 const services2 = require("../controllers/mail");
 
 router.post("/signup", (req, res) => {
-  console.log("the signup data is");
-  console.log(req.body);
+
+  services.HomePageSignupController(req,res);
 });
 
 router.post("/login", (req, res) => { 
-    console.log("the login data is");
-console.log(req.body);
+ services.HomePageLoginController(req,res);
 });
 
-// router.get("/sendMail", services2.SendMailToAdminController);
+router.get("/sendMail", (req, res) => {
+  console.log("Sending mail...");
+  services2.SendMailToAdminController(req, res); // call the SendMailToAdminController function
+});
+
 
 module.exports = router;

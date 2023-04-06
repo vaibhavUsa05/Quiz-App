@@ -12,14 +12,12 @@ mongoose.connect('mongodb://localhost:27017/221B', {
 const SignupSchema = new mongoose.Schema({
     FirstName: {
     type: String,
-    required: true,
-    unique: true
+    required: true
     },
      LastName: {
       type: String,
-      required: true,
-      unique: true
-      },
+      required: true
+     },
     Email: {
     type: String,
     required: true,
@@ -35,5 +33,5 @@ const SignupSchema = new mongoose.Schema({
     }
     });
     
-    const SignupModel= mongoose.model('Signup', SignupSchema);
+    const SignupModel= mongoose.model('Sillections', SignupSchema);
     module.exports = SignupModel;

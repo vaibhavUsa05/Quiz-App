@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost:27017/221B', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
-  console.log('MongoDB database connection successful to mail');
+  console.log('MongoDB database connection successful to login');
 }).catch((error) => {
   console.log('MongoDB database connection error: ', error);
 });

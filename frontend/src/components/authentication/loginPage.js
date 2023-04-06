@@ -36,6 +36,30 @@ const LoginPage = () => {
       theme: "dark",
     });
   }
+  const NosuchUserExist = () => {
+    toast.error('No such User Exist', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
+  const InvalidCred = () => {
+    toast.error('Invalid Password', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
   const onSubmitLoginHandler = async (e) => {
     e.preventDefault(); // prevent default form submission behavior
     try {
@@ -45,15 +69,25 @@ const LoginPage = () => {
       }, { // use POST method and send userData as request body
         withCredentials: true // send cookies with request
       });
-      if (response) {
+      console.log(response);
+      console.log(response.data);
+
+      if(response.data.isExistingUser=== false){
+        NosuchUserExist();
+      }
+       if(response.data.passwordMatching===false){
+        InvalidCred();
+      }
+      if (response.status===201) {
         successfulSubmitAlert();
         navigate("/contestPage");
       }
-      else{
-        InfoSubmitAlert();
-      }
+      
+     
     } catch (err) {
       console.log("error in form");
+      InfoSubmitAlert();
+      navigate("/login");
     }
   }
 
